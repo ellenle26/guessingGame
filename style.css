@@ -9,7 +9,7 @@ body {
     url(/MedievalDungeon.jpg);
   background-position: center;
   background-size: cover;
-  color: #FDFF05;
+  color: #fdff05;
   font-size: 30px;
   display: flex;
   flex-direction: column;
@@ -18,10 +18,30 @@ body {
   text-align: center;
 }
 
-#alert{
-    font-size: 50px;
-    font-weight: 200;
-    color:white;
+#alert {
+  font-size: 50px;
+  font-weight: 200;
+  color: white;
 }
 
+input {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #0b1127;
+  border-width: 3px;
+  border-color: white;
+  color: white;
+}
 
+button {
+  height: 40px;
+  width: 80px;
+  border-radius: 20%;
+  text-align: center;
+  background-color: #0b1127;
+  border-width: 3px;
+  border-color: white;
+  color: white;
+}

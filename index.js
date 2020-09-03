@@ -1,5 +1,5 @@
 let computerNumber = Math.floor(Math.random() * 10) + 1;
-console.log(computerNumber);
+
 let result = "";
 let text = [];
 let guessTime = 3;
@@ -18,6 +18,7 @@ function timecounting() {
       document.getElementById("alert").innerHTML = "You are DEAD!";
       document.getElementById("actionGuess").disabled = true;
       document.getElementById("reset").style = "display:visible";
+      document.getElementById("alert").innerHTML = "";
     }
   }, 1000);
   // every 1 second, it will add 1 into time variable (computer use millisecond so 1000 is 1 second)
