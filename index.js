@@ -1,7 +1,5 @@
 let computerNumber = Math.floor(Math.random() * 10) + 1;
-
 console.log(computerNumber);
-
 let result = "";
 let text = [];
 let guessTime = 3;
@@ -11,19 +9,15 @@ document.getElementById("guessTime").innerHTML = guessTime;
 let time = 30; // time start from 0
 let myTime; // timer will be assign to this variable
 
-function timesOut() {
-  clearInterval(myTime);
-  alert("TIMES OUT");
-  document.getElementById("actionGuess").disabled = true;
-  document.getElementById("reset").style = "display:visible";
-}
-
 function timecounting() {
   myTime = setInterval(() => {
     time -= 1;
     document.getElementById("timecount").innerHTML = time;
     if (time == 0) {
-      timesOut();
+      clearInterval(myTime);
+      document.getElementById("alert").innerHTML = "You are DEAD!";
+      document.getElementById("actionGuess").disabled = true;
+      document.getElementById("reset").style = "display:visible";
     }
   }, 1000);
   // every 1 second, it will add 1 into time variable (computer use millisecond so 1000 is 1 second)
@@ -36,10 +30,10 @@ function reduceGuessTime() {
     guessTime = guessTime - 1;
     document.getElementById("guessTime").innerHTML = guessTime;
   } else {
-    alert("You're out of guess!");
+    clearInterval(myTime);
+    document.getElementById("alert").innerHTML = "You're out of guess!";
     document.getElementById("actionGuess").disabled = true;
     document.getElementById("reset").style = "display:visible";
-    clearInterval(myTime);
   }
 }
 
@@ -51,24 +45,25 @@ function guess() {
       result = "You've guessed this number before";
       document.getElementById("resultArea").innerHTML = result;
     } else {
-      alert("You're out of guess!");
+      clearInterval(myTime);
+      document.getElementById("alert").innerHTML = "You're out of guess!";
       document.getElementById("actionGuess").disabled = true;
       document.getElementById("reset").style = "display:visible";
-      clearInterval(myTime);
     }
   } else {
     if (userNumber >= 0 && userNumber <= 10) {
       reduceGuessTime();
       if (computerNumber < userNumber) {
-        result = "too big";
+        result = "HINT: try smaller number";
         document.getElementById("resultArea").innerHTML = result;
       } else if (computerNumber > userNumber) {
-        result = "too small";
+        result = "HINT: try bigger number";
         document.getElementById("resultArea").innerHTML = result;
       } else if (computerNumber == userNumber) {
         result = "Correct";
         document.getElementById("resultArea").innerHTML = result;
-        alert("You won!");
+        document.getElementById("alert").innerHTML =
+          "You won! lucky bastard :)";
         document.getElementById("actionGuess").disabled = true;
         document.getElementById("reset").style = "display:visible";
       }
