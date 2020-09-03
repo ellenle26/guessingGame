@@ -1,0 +1,20 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  margin: 0px;
+}
+
+.container {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(/MedievalDungeon.jpg);
+  background-position: center;
+  background-size: cover;
+  color: #FDFF05;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+

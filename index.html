@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+      <div class="container">
+      <h1><ion-icon name="skull-outline"></ion-icon> GUESSING GAME <ion-icon name="skull-outline"></ion-icon></h1>
+      <div>
+      <div>You have &nbsp; <span id="timecount"></span>s left</div>
+      <div>Number of guesses: <span id="guessTime"></span></div>
+      <input id="userInput"></input>
+      <button id="actionGuess" onclick="guess()">Guess</button>
+      <button id="reset" onclick="resetGame()" style="display:none">Reset</button>
+      <div id="resultArea"></div>
+      <div>Your guessed numbers: <span id="guessHistory"></span></div>
+    </div>
+    </div>
+
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
