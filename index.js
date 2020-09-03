@@ -53,26 +53,34 @@ function guess() {
   } else {
     if (userNumber >= 0 && userNumber <= 10) {
       reduceGuessTime();
-      if (computerNumber < userNumber) {
-        result = "HINT: try smaller number";
-        document.getElementById("resultArea").innerHTML = result;
-      } else if (computerNumber > userNumber) {
-        result = "HINT: try bigger number";
-        document.getElementById("resultArea").innerHTML = result;
-      } else if (computerNumber == userNumber) {
-        result = "Correct";
-        document.getElementById("resultArea").innerHTML = result;
-        document.getElementById("alert").innerHTML =
-          "You won! lucky bastard :)";
+      if (text.length <= 3) {
+        if (computerNumber < userNumber) {
+          result = "HINT: try smaller number";
+          document.getElementById("resultArea").innerHTML = result;
+        } else if (computerNumber > userNumber) {
+          result = "HINT: try bigger number";
+          document.getElementById("resultArea").innerHTML = result;
+        } else if (computerNumber == userNumber) {
+          result = "Correct";
+          document.getElementById("resultArea").innerHTML = result;
+          document.getElementById("alert").innerHTML =
+            "You won! lucky bastard :)";
+          document.getElementById("actionGuess").disabled = true;
+          document.getElementById("reset").style = "display:visible";
+        }
+
+        text.push(userNumber);
+        text.splice(3, 1);
+        document.getElementById("guessHistory").innerHTML = text;
+      } else {
+        clearInterval(myTime);
+        document.getElementById("alert").innerHTML = "You're out of guess!";
         document.getElementById("actionGuess").disabled = true;
         document.getElementById("reset").style = "display:visible";
       }
-
-      text.push(userNumber);
-      text.splice(3, 1);
-      document.getElementById("guessHistory").innerHTML = text;
     } else {
-      alert("Please choose number from 0-10 only");
+      document.getElementById("resultArea").innerHTML =
+        "Please choose number from 0-10 only";
     }
   }
 }
@@ -88,4 +96,5 @@ function resetGame() {
   document.getElementById("resultArea").innerHTML = "";
   text = [];
   document.getElementById("guessHistory").innerHTML = text;
+  document.getElementById("alert").innerHTML = "";
 }
