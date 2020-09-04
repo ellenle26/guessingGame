@@ -4,7 +4,8 @@ body {
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url(/MedievalDungeon.jpg);
   background-position: center;

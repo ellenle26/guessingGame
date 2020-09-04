@@ -1,5 +1,5 @@
 let computerNumber = Math.floor(Math.random() * 10) + 1;
-
+console.log(computerNumber);
 let result = "";
 let text = [];
 let guessTime = 3;
@@ -38,9 +38,32 @@ function reduceGuessTime() {
   }
 }
 
+let round;
+let score;
+
+let scoreHistory = [];
+
+function updateDashBoard() {
+  let historyBoard = "";
+  for (let i = 0; i < scoreHistory.length; i++) {
+    historyBoard += `<li>Round ${i + 1} : ${scoreHistory[i]}s</li>`;
+    document.getElementById("dashBoard").innerHTML = historyBoard;
+  }
+}
+
+function updateHighScore() {
+  let max = 99;
+  for (let i = 0; i < scoreHistory.length; i++) {
+    if (max >= scoreHistory[i]) {
+      max = scoreHistory[i];
+      document.getElementById("highScore").innerHTML = `${max}s`;
+    }
+  }
+}
+
 function guess() {
   let userNumber = document.getElementById("userInput").value;
-
+  round++;
   if (text.includes(userNumber)) {
     if (guessTime > 0) {
       result = "You've guessed this number before";
@@ -63,6 +86,11 @@ function guess() {
           document.getElementById("resultArea").innerHTML = result;
         } else if (computerNumber == userNumber) {
           result = "Correct";
+          clearInterval(myTime);
+          score = 30 - time;
+          scoreHistory.push(score);
+          updateDashBoard();
+          updateHighScore();
           document.getElementById("resultArea").innerHTML = result;
           document.getElementById("alert").innerHTML =
             "You won! lucky bastard :)";
@@ -87,6 +115,8 @@ function guess() {
 }
 
 function resetGame() {
+  computerNumber = Math.floor(Math.random() * 10) + 1;
+  console.log(computerNumber);
   time = 30;
   document.getElementById("timecount").innerHTML = time;
   timecounting();
@@ -99,3 +129,7 @@ function resetGame() {
   document.getElementById("guessHistory").innerHTML = text;
   document.getElementById("alert").innerHTML = "";
 }
+
+// array chua aobject
+// object chua round and score
+// khi result = correct, add round and time
