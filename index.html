@@ -20,7 +20,15 @@
       <div>Your guessed numbers: <span id="guessHistory"></span></div>
     </div>
     </div>
-
+    <script>
+      var input = document.getElementById("userInput");
+      input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+         event.preventDefault();
+         document.getElementById("actionGuess").click();
+        }
+      });
+      </script>
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script src="index.js"></script>
   </body>
